@@ -1,27 +1,24 @@
-<%= form_with(model: Property.new) do |form| %>
-  <div class="Property_Name">
-    <%= form.label :Property %>
-    <%= form.text_field :propertyName %>
-  </div>
-  <div class="property_rent">
-    <%= form.label :Rent %>
-    <%= form.text_field :rent %>
-  </div>
-  <div class="property_rail">
-    <%= form.label :RailName %>
-    <%= form.text_field :railName %>
-  </div>
-  <div class="property_age">
-    <%= form.label :Age %>
-    <%= form.text_field :buildAge %>
-  </div>
-  <div class="property_address">
-    <%= form.label :Addresse %>
-    <%= form.text_field :address %>
-  </div>
-  <div class="property_note">
-    <%= form.label :note %>
-    <%= form.text_field :note %>
-  </div>
-  <%= form.submit %>
+<h1>Property list</h1>
+<table>
+  <tr>
+    <th>Property name</th>
+    <th>Rent</th>
+    <th>Rail name rails</th>
+    <th>Age</th>
+    <th>Adrees</th>
+    <th>note</th>
+  </tr>
+<% @properties.each do |property| %>
+  <tr>
+    <td><%= property.propertyName %></td>
+    <td><%= property.rent %></td>
+    <td><%= property.railName %></td>
+    <td><%= property.buildAge %></td>
+    <td><%= property.address %></td>
+    <td><%= property.note %></td>
+    <td><%= link_to 'Check the details', property_path(property.id) %></td>
+  </tr>
 <% end %>
+</table>
+<br>
+<%= link_to 'Post a new property', new_property_path %>

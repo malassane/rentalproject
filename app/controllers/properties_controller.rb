@@ -11,12 +11,12 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @property = Property.new(property_params)
     if params[:back]
       render :new
       else
-        if @post.save
-          redirect_to posts_path, notice: "ブログを作成しました！"
+        if @property.save
+          redirect_to properties_path, notice: "ブログを作成しました！"
         else
           render :new
         end
@@ -51,8 +51,7 @@ end
     end
   end
 
-
-  def set_post
+  def set_property
         @property = Property.find(params[:id])
   end
 
