@@ -40,6 +40,7 @@ class PropertiesController < ApplicationController
       flash[:error] = 'Failed to delete this property!'
       render :destroy
   end
+end
 
   def update
     #@property = Property.find(params[:id])   # Overlap!
@@ -64,4 +65,5 @@ class PropertiesController < ApplicationController
   def property_params
     params.require(:property).permit(:propertyName, :rent, :railName, :buildAge, :address, :note)
   end
+
 end
