@@ -16,7 +16,9 @@
     <td><%= property.buildAge %></td>
     <td><%= property.address %></td>
     <td><%= property.note %></td>
+
     <td><%= link_to 'Check the details', property_path(property.id) %></td>
+      <td><%= link_to "Edit property", edit_property_path(property.id) %></td>
   </tr>
 <% end %>
 </table>

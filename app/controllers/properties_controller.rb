@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
 
-  before_action :set_property, only: [:show, :edit, :update, :destroy]
+  #before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :set_property, only: [:show, :edit, :update]
 
   def index
     @properties = Property.all
@@ -43,7 +44,7 @@ class PropertiesController < ApplicationController
 end
 
   def update
-    #@property = Property.find(params[:id])   # Overlap!
+    @property = Property.find(params[:id])   # Overlap!
     if @property.update(property_params)
       redirect_to properties_path, notice: "I edited the property!"
     else
@@ -51,9 +52,7 @@ end
     end
   end
 
-  def set_property
-        @property = Property.find(params[:id])
-  end
+
 
   def destroy
     @property.destroy
@@ -63,6 +62,10 @@ end
   private
   def property_params
     params.require(:property).permit(:propertyName, :rent, :railName, :buildAge, :address, :note)
+  end
+
+  def set_property
+        @property = Property.find(params[:id])
   end
 
 end
