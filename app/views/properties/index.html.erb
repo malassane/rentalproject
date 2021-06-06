@@ -17,8 +17,11 @@
     <td><%= property.address %></td>
     <td><%= property.note %></td>
 
-    <td><%= link_to 'Check the details', property_path(property.id) %></td>
-      <td><%= link_to "Edit property", edit_property_path(property.id) %></td>
+      <td><%= link_to 'Check the details', property_path(property.id) %></td>
+        <td><%= link_to "Edit property", edit_property_path(property.id) %></td>
+
+   <td><%= link_to 'supprimer', property_path(property.id), method: :delete ,data: { confirm: 'voulez vous supprimer？' } %></td>
+
   </tr>
 <% end %>
 </table>

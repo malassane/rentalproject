@@ -22,24 +22,26 @@ class StationsController < ApplicationController
     render :new
   end
   end
-  end
 
   def show
+
   end
 
   def edit
+
   end
 
 
 
   def update
-     @station = Station.find(params[:id])   # Overlap!
-     if @station.update(station_params)
-       redirect_to stations_path, notice: "I edited the station!"
-     else
-       render :edit
-    end
-    end
+  @station = Station.find(params[:id])   # Overlap!
+  if @station.update(station_params)
+    redirect_to stations_path, notice: "I edited the station!"
+  else
+    render :edit
+  end
+  end
+
   def destroy
     @station = Station.find(params[:id])
     if @station.delete
@@ -49,8 +51,6 @@ class StationsController < ApplicationController
       flash[:error] = 'Failed to delete this station!'
       render :destroy
     end
-    end
-
 
     def set_post
           @station = Station.find(params[:id])
@@ -65,3 +65,6 @@ class StationsController < ApplicationController
     def station_params
       params.require(:station).permit(:stationName, :timeWalk, :railName, :railName)
     end
+
+
+end

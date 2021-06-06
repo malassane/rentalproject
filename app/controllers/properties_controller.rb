@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
 
   #before_action :set_property, only: [:show, :edit, :update, :destroy]
-  before_action :set_property, only: [:show, :edit, :update]
+  before_action :set_property, only: [:show, :edit, :update,:destroy ]
 
   def index
     @properties = Property.all
@@ -61,7 +61,7 @@ end
 
   private
   def property_params
-    params.require(:property).permit(:propertyName, :rent, :railName, :buildAge, :address, :note)
+    params.require(:property).permit(:propertyName, :rent, :railName, :buildAge, :address, :note, stations_attributes:{} )
   end
 
   def set_property
