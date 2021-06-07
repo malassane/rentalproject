@@ -5,26 +5,20 @@ class PropertiesController < ApplicationController
     @properties = Property.all
   end
   def new
-    if params[:back]
       @property = Property.new(property_params)
-    else
-      @property = Property.new
-      3.times { @property.stations.build }
-    end
   end
+
   def create
     @property = Property.new(property_params)
-    if params[:back]
-      render :new
+      if @property.save
+          redirect_to properties_path, notice: "ok cre"
       else
-        if @property.save
-          redirect_to properties_path, notice: "ブログを作成しました！"
-        else
-          render :new
-        end
+        render :new
       end
     end
+
   def show
+    @station = S
   end
   def edit
   end
@@ -52,7 +46,7 @@ end
   end
   private
   def property_params
-    params.require(:property).permit(:propertyName, :rent, :railName, :buildAge, :address, :note, stations_attributes:{} )
+    params.require(:property).permit(:propertyName, :rent, :railName, :buildAge, :address, :note )
   end
   def set_property
         @property = Property.find(params[:id])

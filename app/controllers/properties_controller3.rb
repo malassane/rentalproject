@@ -9,7 +9,7 @@ class PropertiesController < ApplicationController
       @property = Property.new(property_params)
     else
       @property = Property.new
-      3.times { @property.stations.build }
+      2.times { @property.stations.build }
     end
   end
   def create

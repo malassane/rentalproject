@@ -9,6 +9,7 @@
     <th>note</th>
   </tr>
 <% @properties.each do |property| %>
+
   <tr>
     <td><%= property.propertyName %></td>
     <td><%= property.rent %></td>
@@ -17,6 +18,7 @@
     <td><%= property.address %></td>
     <td><%= property.note %></td>
 
+
       <td><%= link_to 'Check the details', property_path(property.id) %></td>
         <td><%= link_to "Edit property", edit_property_path(property.id) %></td>
 
@@ -24,6 +26,7 @@
 
   </tr>
 <% end %>
+
 </table>
 <br>
 <%= link_to 'Post a new property', new_property_path %>

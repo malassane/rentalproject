@@ -1,13 +1,4 @@
 <h2>Create a blog</h2>
-<%= fields_for :stations do |station| %>
-    <div class="station_name">
-     <%= station.label :station  %>
-     <%= station.text_field :stationName %>
-     <div class="time_walk">
-     <%= station.label :Time %>
-     <%= station.text_field :timeWalk %>
-     <div class="">
-     <%= station.label :Rails %>
-     <%= station.text_field :railName %>
-     <% end %>
+
+
 <%= render 'form' %>

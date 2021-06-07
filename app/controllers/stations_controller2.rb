@@ -1,5 +1,7 @@
-class PropertiesController < ApplicationController
-  #before_action :set_property, only: [:show, :edit, :update, :destroy]
+class StationsController < ApplicationController
+
+  class PropertiesController < ApplicationController
+
   before_action :set_property, only: [:show, :edit, :update,:destroy ]
   def index
     @properties = Property.all
@@ -9,21 +11,22 @@ class PropertiesController < ApplicationController
       @property = Property.new(property_params)
     else
       @property = Property.new
-      3.times { @property.stations.build }
+      2.times { @property.stations.build }
     end
   end
-  def create
-    @property = Property.new(property_params)
-    if params[:back]
-      render :new
-      else
+
+    def create
+      @property = Property.new(property_params)
         if @property.save
-          redirect_to properties_path, notice: "ブログを作成しました！"
+          redirect_to properties_path, notice: "property cre"
+
         else
           render :new
         end
-      end
     end
+
+
+
   def show
   end
   def edit
