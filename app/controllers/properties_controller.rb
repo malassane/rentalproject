@@ -9,24 +9,52 @@ class PropertiesController < ApplicationController
       @property = Property.new(property_params)
     else
       @property = Property.new
-      3.times { @property.stations.build }
+      2.times { @property.stations.build }
     end
   end
+
+
+  # def new
+  #   @ = Post.new
+  # end
+  #
+  # def create
+  #   @post = current_user.posts.build(post_params)
+  #   #@post = Post.new(post_params)
+  #   if params[:back]
+  #     render :new
+  #   else
+  #     if @post.save
+  #       redirect_to posts_path, notice: "i post a blog！"
+  #     else
+  #       render :new
+  #     end
+  #   end
+  # end
+
+
+
+
+
   def create
     @property = Property.new(property_params)
     if params[:back]
       render :new
       else
         if @property.save
-          redirect_to properties_path, notice: "ブログを作成しました！"
+          redirect_to properties_path, notice: "creation de proprité"
         else
           render :new
         end
       end
     end
+
   def show
   end
   def edit
+    @station = @property.stations.create
+
+
   end
   def destroy
     @property = Property.find(params[:id])
