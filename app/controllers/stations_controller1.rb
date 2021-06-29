@@ -10,40 +10,35 @@ class StationsController < ApplicationController
     @station = Station.new
   end
 
-
   def create
-  @station = Station.new(station_params)
-  if params[:back]
-    render :new
-  else
-  if @station.save
-    redirect_to stations_path, notice: "I have created a station!"
-  else
-    render :new
-  end
-  end
+    @station = Station.new(station_params)
+    if params[:back]
+      render :new
+    else
+      if @station.save
+        redirect_to stations_path, notice: "I have created a station!"
+      else
+        render :new
+      end
+    end
+  end 
 
   def show
-
   end
 
   def edit
-
   end
-
-
 
   def update
-  @station = Station.find(params[:id])   # Overlap!
-  if @station.update(station_params)
-    redirect_to stations_path, notice: "I edited the station!"
-  else
-    render :edit
+    # Overlap!
+    if @station.update(station_params)
+      redirect_to stations_path, notice: "I edited the station!"
+    else
+      render :edit
+    end
   end
-  end
-
+  
   def destroy
-    @station = Station.find(params[:id])
     if @station.delete
       flash[:notice] = 'station deleted!'
       redirect_to root_path
@@ -51,20 +46,22 @@ class StationsController < ApplicationController
       flash[:error] = 'Failed to delete this station!'
       render :destroy
     end
+  end
 
-    def set_post
-          @station = Station.find(params[:id])
-    end
+  def set_post
+      @station = Station.find(params[:id])
+  end
 
-    def destroy
+  def destroy
       @station.destroy
       redirect_to stations_path, notice:"I deleted the property!"
-    end
+  end
 
-    private
-    def station_params
-      params.require(:station).permit(:stationName, :timeWalk, :railName, :railName)
-    end
-
-
+  private
+  def station_params
+    params.require(:station).permit(:stationName, :timeWalk, :railName, :railName)
+  end
+  def set_station
+    @station = Station.find(params[:id])
+  end
 end
