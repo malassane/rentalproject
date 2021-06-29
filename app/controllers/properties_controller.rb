@@ -33,7 +33,6 @@ class PropertiesController < ApplicationController
   end
 
   def destroy
-    
     if @property.delete
       flash[:notice] = 'station deleted!'
       redirect_to properties_path
@@ -59,4 +58,6 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     #@property = Property.find_by_id(params[:property_id])
   end
+  def test
+  end 
 end
